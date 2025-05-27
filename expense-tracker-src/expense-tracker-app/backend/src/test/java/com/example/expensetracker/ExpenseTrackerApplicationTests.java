@@ -8,7 +8,7 @@ class ExpenseTrackerApplicationTests {
 
     @Test
     void contextLoads() {
-        // intetntionally left empty to test if the application context loads successfully
+        // intetntionally left empty
     }
 
 }
