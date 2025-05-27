@@ -6,20 +6,20 @@ import java.time.LocalTime;
 
 public class TransactionDTO {
 
-    private Long transactionId;
+    private String transactionId;
     private String transactionNumber;
     private BigDecimal amount;
     private LocalDate transactionDate;
     private LocalTime transactionTime;
-    private Long categoryId;
-    private Long customerId;
+    private String categoryId;
+    private String customerId;
 
     // Getters and Setters
-    public Long getTransactionId() {
+    public String getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(Long transactionId) {
+    public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
@@ -55,19 +55,19 @@ public class TransactionDTO {
         this.transactionTime = transactionTime;
     }
 
-    public Long getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Long categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 
-    public Long getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 }

@@ -6,16 +6,16 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "Transaction", schema = "expense-tracker")
+@Table(name = "transaction", schema = "expense-tracker")
 public class Transaction {
+
+    @Column(name = "transaction_number", nullable = false, unique = true)
+    private String transactionNumber;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")
-    private Long transactionId;
-
-    @Column(name = "transaction_number", nullable = false, unique = true)
-    private String transactionNumber;
+    private String transactionId;
 
     @Column(name = "amount", nullable = false)
     private BigDecimal amount;
@@ -26,18 +26,20 @@ public class Transaction {
     @Column(name = "transaction_time", nullable = false)
     private LocalTime transactionTime;
 
-    @Column(name = "category_id", nullable = false)
-    private Long categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "transaction_ibfk_1"))
+    private TransactionCategory category;
 
-    @Column(name = "customer_id", nullable = false)
-    private Long customerId;
+    @ManyToOne
+    @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "transaction_ibfk_2"))
+    private Customer customer;
 
     // Getters and Setters
-    public Long getTransactionId() {
+    public String getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(Long transactionId) {
+    public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
@@ -73,19 +75,19 @@ public class Transaction {
         this.transactionTime = transactionTime;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public TransactionCategory getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(TransactionCategory category) {
+        this.category = category;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
